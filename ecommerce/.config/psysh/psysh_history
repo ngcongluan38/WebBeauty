@@ -1,0 +1,4 @@
+Schema::hasTable('products')
+docker-compose exec db mysql -u root -p
+Schema::getColumnListing('products')
+DB::select('SHOW TABLES');
