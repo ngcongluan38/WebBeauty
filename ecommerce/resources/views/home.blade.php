@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Làm Đẹp Thiên Nhiên - Trang Chủ')
+@section('title', 'Cửa hàng thể thao - Trang Chủ')
 
 @section('content')
 <div class="container">
@@ -11,18 +11,22 @@
                 <div class="list-group-item bg-success text-white">
                     <strong>DANH MỤC SẢN PHẨM</strong>
                 </div>
-              
+                {{-- @foreach($categories as $category) --}}
+                {{-- <a href="{{ route('products.category', $category->slug) }}" class="list-group-item list-group-item-action"> --}}
+                    {{-- {{ $category->name }} --}}
+                {{-- </a> --}}
+                {{-- @endforeach --}}
             </div>
         </div>
         <div class="col-md-9">
             <div id="mainCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        {{-- <img src="{{ asset('images/banner1.jpg') }}" class="d-block w-100" alt="Banner 1"> --}}
-                        <img src="https://img.freepik.com/free-vector/perfume-bottle-black-silk-fabric_107791-1390.jpg" class="d-block w-100" alt="Banner 1">
+                   <div class="carousel-item active">
+                        {{-- <img loading="lazy" src="{{ asset('images/banner1.jpg') }}" class="d-block w-100" alt="Banner 1"> --}}
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Banner 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://t3.ftcdn.net/jpg/02/92/08/76/360_F_292087658_DcjJQHybeo1WYSnnw8dYd0BQnUbvpcDt.jpg" class="d-block w-100" alt="Banner 2">
+                        <img loading="lazy" src="https://plus.unsplash.com/premium_photo-1664537975122-9c598d85816e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Banner 2">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
@@ -52,7 +56,7 @@
         <div class="col-md-3 mb-4">
             <div class="card product-card h-100">
                 <a href="{{ route('products.show', $product->slug) }}">
-                   <img src="{{ Storage::url($product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                    <img loading="lazy" src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                 </a>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">
@@ -70,7 +74,7 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2 mt-3">
-                            <a href="{{ route('products.show', $product->slug) }}" class="btn btn-success">Mua ngay</a>
+                            <a href="{{ route('contact') }}" class="btn btn-success">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +102,7 @@
         <div class="col-md-3 mb-4">
             <div class="card product-card h-100">
                 <a href="{{ route('products.show', $product->slug) }}">
-                    <img src="{{ Storage::url($product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                    <img loading="lazy" src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                 </a>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">
@@ -116,7 +120,7 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2 mt-3">
-                            <a href="{{ route('products.show', $product->slug) }}" class="btn btn-success">Mua ngay</a>
+                            <a href="{{ route('contact') }}" class="btn btn-success">Mua ngay</a>
                         </div>
                     </div>
                 </div>

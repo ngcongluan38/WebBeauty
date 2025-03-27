@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Làm Đẹp Thiên Nhiên')</title>
+    <title>@yield('title', 'Cửa hàng thể thao')</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -21,7 +21,6 @@
                     <div class="col-md-6">
                         <div class="social-icons">
                             <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
@@ -33,7 +32,7 @@
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <a href="{{ route('home') }}" class="text-decoration-none">
-                        <img src="{{ asset('images/logo.png') }}" alt="Làm Đẹp Thiên Nhiên" class="img-fluid" style="max-height: 60px;">
+                        <img loading="lazy" src="{{ asset('images/logo.png') }}" alt="Cửa hàng thể thao" class="img-fluid" style="max-height: 60px;">
                     </a>
                 </div>
                 <div class="col-md-6">
@@ -47,7 +46,7 @@
                 <div class="col-md-3 text-end">
                     <div class="contact-info">
                         <p class="mb-0 small">Gọi ngay</p>
-                        <a href="tel:0908331900" class="text-success text-decoration-none fw-bold">0908331900</a>
+                        <a href="tel:0xxxxxxxx" class="text-success text-decoration-none fw-bold">0xxxxxxxx</a>
                     </div>
                 </div>
             </div>
@@ -61,28 +60,31 @@
                 </button>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                <i class="fas fa-bars me-2"></i> DANH MỤC
-                            </a>
-                            <ul class="dropdown-menu">
-                                <span>Categories here</span>
-                            </ul>
-                        </li>
+                        {{-- <li class="nav-item dropdown"> --}}
+                        {{--     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> --}}
+                        {{--         <i class="fas fa-bars me-2"></i> DANH MỤC --}}
+                        {{--     </a> --}}
+                        {{--     <ul class="dropdown-menu"> --}}
+                        {{--         @foreach($categories as $category) --}}
+                        {{--         <li> --}}
+                        {{--             <a class="dropdown-item" href="{{ route('products.category', $category->slug) }}"> --}}
+                        {{--                 {{ $category->name }} --}}
+                        {{--             </a> --}}
+                        {{--         </li> --}}
+                        {{--         @endforeach --}}
+                        {{--     </ul> --}}
+                        {{-- </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">GIỚI THIỆU</a>
+                            <a class="nav-link" href="{{ route('about') }}">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('products.index') }}">SẢN PHẨM</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">TIN TỨC SỨC KHỎE - LÀM ĐẸP</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">LIÊN HỆ</a>
+                            <a class="nav-link" href="{{ route('contact') }}">LIÊN HỆ</a>
                         </li>
                     </ul>
                 </div>
@@ -99,30 +101,33 @@
             <div class="row">
                 <div class="col-md-4">
                     <h5>Về Chúng Tôi</h5>
-                    <p>Làm Đẹp Thiên Nhiên cung cấp các sản phẩm chăm sóc sức khỏe và làm đẹp từ thiên nhiên.</p>
+                    <p>Cửa hàng thể thao Sport Elite cung cấp các sản phẩm thể thao chất lượng cao, thiết bị tập luyện và trang phục thể thao chuyên nghiệp tại Việt Nam.</p>
                     <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh</p>
-                    <p>Email: info@lamdepthiennhien.org</p>
-                    <p>Điện thoại: 0908331900</p>
+                    <p>Email: info@cuahangthethao.org</p>
+                    <p>Điện thoại: 0xxxxxxxx</p>
                 </div>
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <h5>Danh Mục Sản Phẩm</h5>
                     <ul class="list-unstyled">
-                                                     <span>Categories here</span>
-
+                        @foreach($categories as $category)
+                        <li><a href="{{ route('products.category', $category->slug) }}" class="text-white">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
-                </div>
+                </div> --}}
                 <div class="col-md-4">
                     <h5>Kết Nối Với Chúng Tôi</h5>
                     <div class="social-icons">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-2x"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-youtube fa-2x"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" target="_blank" class="text-white me-3"><i class="fab fa-facebook-f fa-1x"></i></a>
+                        <a href="#" target="_blank" class="text-white me-3">
+                            <img src="{{ asset('images/zalo-icon.svg') }}" alt="Zalo" class="zalo-icon">
+                        </a>
+					</a>
                     </div>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-12 text-center">
-                    <p class="mb-0">&copy; {{ date('Y') }} Làm Đẹp Thiên Nhiên. All rights reserved.</p>
+                    <p class="mb-0">&copy; {{ date('Y') }} Cửa hàng thể thao. All rights reserved.</p>
                 </div>
             </div>
         </div>

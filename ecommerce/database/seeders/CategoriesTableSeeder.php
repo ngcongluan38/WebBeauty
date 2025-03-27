@@ -41,21 +41,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Các sản phẩm thực phẩm y tế và chức năng',
                 'is_active' => true,
                 'order' => 4,
-            ],
-            [
-                'name' => 'Thực Phẩm Dinh Dưỡng',
-                'slug' => Str::slug('Thực Phẩm Dinh Dưỡng'),
-                'description' => 'Các sản phẩm thực phẩm dinh dưỡng',
-                'is_active' => true,
-                'order' => 5,
-            ],
-            [
-                'name' => 'Sản Phẩm An Toàn Cho Mẹ Và Bé',
-                'slug' => Str::slug('Sản Phẩm An Toàn Cho Mẹ Và Bé'),
-                'description' => 'Các sản phẩm an toàn cho mẹ và bé',
-                'is_active' => true,
-                'order' => 6,
-            ],
+            ]
         ];
 
         foreach ($categories as $category) {

@@ -41,14 +41,18 @@ class ProductController extends Controller
                 $query->oldest();
                 break;
             case 'latest':
+                $query->latest();
+                break;
             default:
                 $query->latest();
                 break;
         }
-        
+
         $products = $query->paginate(12);
+
+        $categories = Category::all();
         
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'categories'));
     }
 
     /**
@@ -69,15 +73,36 @@ class ProductController extends Controller
     /**
      * Display products by category.
      */
-    public function category($slug)
+    public function category(Request $request, $slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $products = Product::where('category_id', $category->id)
-            ->active()
-            ->latest()
-            ->paginate(12);
+        $query = Product::where('category_id', $category->id)
+            ->active();
         
-        return view('products.category', compact('category', 'products'));
+        $sortBy = $request->get('sort', 'latest');
+
+        switch ($sortBy) {
+            case 'price-low-high':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'price-high-low':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'oldest':
+                $query->oldest();
+                break;
+            case 'latest':
+                $query->latest();
+            default:
+                $query->latest();
+                break;
+        }
+            
+        $products = $query->paginate(12);
+
+        $categories = Category::all();
+
+        return view('products.category', compact('category', 'products', 'categories'));
     }
 }
 

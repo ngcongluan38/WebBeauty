@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $product->name . ' - Làm Đẹp Thiên Nhiên')
+@section('title', $product->name . ' - Cửa hàng thể thao')
 
 @section('content')
 <div class="container">
@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-5">
             <div class="product-image mb-4">
-               <img src="{{ Storage::url($product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                <img loading="lazy" src="{{ asset('storage/' . $product->image) }}" class="img-fluid" alt="{{ $product->name }}">
             </div>
         </div>
         <div class="col-md-7">
@@ -47,11 +47,13 @@
                 <p><strong>Danh mục:</strong> <a href="{{ route('products.category', $product->category->slug) }}">{{ $product->category->name }}</a></p>
                 <p><strong>Tình trạng:</strong> @if($product->stock > 0) <span class="text-success">Còn hàng</span> @else <span class="text-danger">Hết hàng</span> @endif</p>
                 @if($product->sku)
-                <p><strong>Mã sản phẩm:</strong> {{ $product->sku }}</p>
+                    <p><strong>Mã sản phẩm:</strong> {{ $product->sku }}</p>
                 @endif
+                <a href="{{ route('contact') }}" class="btn btn-success" id="buyNow">Mua ngay</a>
             </div>
             
-            <div class="product-actions">
+            {{-- TODO: Uncomment when order feature is active --}}
+            {{-- <div class="product-actions">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-group mb-3">
@@ -63,11 +65,11 @@
                     <div class="col-md-8">
                         <div class="d-grid gap-2">
                             <button class="btn btn-success" type="button" id="addToCart">Thêm vào giỏ hàng</button>
-                            <button class="btn btn-danger" type="button" id="buyNow">Mua ngay</button>
+                            <a href="{{ route('contact') }}" class="btn btn-danger" id="buyNow">Mua ngay</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     
@@ -80,7 +82,7 @@
             <div class="col-md-3 mb-4">
                 <div class="card product-card h-100">
                     <a href="{{ route('products.show', $relatedProduct->slug) }}">
-                    <img src="{{ Storage::url($relatedProduct->image) }}" class="card-img-top" alt="{{ $relatedProduct->name }}">
+                        <img loading="lazy" src="{{ asset('storage/' . $relatedProduct->image) }}" class="card-img-top" alt="{{ $relatedProduct->name }}">
                     </a>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">
@@ -98,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2 mt-3">
-                                <a href="{{ route('products.show', $relatedProduct->slug) }}" class="btn btn-success">Mua ngay</a>
+                                <a href="{{ route('contact') }}" class="btn btn-success">Mua ngay</a>
                             </div>
                         </div>
                     </div>
@@ -141,12 +143,7 @@
             alert('Sản phẩm đã được thêm vào giỏ hàng');
         });
         
-        // Buy now button
-        const buyNowBtn = document.getElementById('buyNow');
-        buyNowBtn.addEventListener('click', function() {
-            // In a real application, this would redirect to checkout
-            alert('Chuyển đến trang thanh toán');
-        });
+        // Buy now button is now a direct link to contact page, no JavaScript needed
     });
 </script>
 @endsection

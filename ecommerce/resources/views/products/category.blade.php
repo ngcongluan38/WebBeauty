@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $category->name . ' - Làm Đẹp Thiên Nhiên')
+@section('title', $category->name . ' - Cửa hàng thể thao')
 
 @section('content')
 <div class="container">
@@ -55,7 +55,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card product-card h-100">
                         <a href="{{ route('products.show', $product->slug) }}">
-                           <img src="{{ Storage::url($product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                            <img loading="lazy" src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                         </a>
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2 mt-3">
-                                    <a href="{{ route('products.show', $product->slug) }}" class="btn btn-success">Mua ngay</a>
+                                    <a href="{{ route('contact') }}" class="btn btn-success">Mua ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                {{ $products->appends(request()->except('page'))->links() }}
+                {{ $products->appends(request()->except('page'))->links('pagination::bootstrap-5') }}
             </div>
             @endif
         </div>
